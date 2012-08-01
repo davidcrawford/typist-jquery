@@ -3,9 +3,6 @@
     <style>\
     .typist-container {\
       overflow: hidden;\
-      font-family: monospace;\
-      background-color: #333;\
-      color: #DDD;\
       padding-left: 4px;\
     }\
     .typist-container p {\
@@ -18,7 +15,9 @@
 
   var MAX_SCROLL = 999999999;
   var defaults = {
-    width: 400,
+    backgroundColor: '#333',
+    textColor: '#DDD',
+    fontFamily: 'monospace',
     height: 300
   };
   var $el, typeDelay = 80;
@@ -52,8 +51,13 @@
 
       $el = this;
 
+      var oldStyle = $el.attr('style') + ';' || '';
+      var style = 'background-color: ' + config.backgroundColor;
+      style += '; color: ' + config.textColor;
+      style += '; font-family: ' + config.fontFamily;
+
       $el.addClass('typist-container')
-        .width(config.width)
+        .attr('style', oldStyle + style)
         .height(config.height);
 
       startBlink();
