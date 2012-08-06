@@ -16,6 +16,8 @@ $('#terminal').typist('prompt')
 
 See it in action at http://chartulo.us
 
+This software is licensed under the MIT license.  See the details in the file called LICENSE.
+
 ## Options
 
 Pass in options when initializing your 'terminal' by passing in an object with the following properties.
