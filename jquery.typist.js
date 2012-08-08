@@ -40,7 +40,11 @@
     $('.cursor').remove();
     var p = $('<p>&nbsp;</p>');
     $el.append(p);
-    $el.scrollTop(MAX_SCROLL);
+    var height = 0;
+    $el.children().each(function() {
+      height += $(this).height();
+    });
+    $el.scrollTop(height);
     return p;
   };
 
@@ -70,7 +74,6 @@
         addLine()
           .addClass('prompt')
           .html('$ <span class="cursor">|</span>');
-        $el.scrollTop(MAX_SCROLL);
         next();
       });
     },
@@ -79,7 +82,6 @@
       var typeChar = function(index) {
         $el.queue(function(next) {
           $('.cursor').before(text[index]);
-          $el.scrollTop(MAX_SCROLL);
           next();
         })
         .delay(typeDelay);
@@ -98,7 +100,6 @@
           }
 
           $p.append(text[index]);
-          $el.scrollTop(MAX_SCROLL);
           next();
         })
         .delay(typeDelay);
